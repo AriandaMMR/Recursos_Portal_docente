@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Transforma tu documento | Formato APA</title>
+
+  <link rel="stylesheet" href="syles.css">
+  <script src="fuctions.js" defer></script>
+</head>
+
+<body>
+  <main class="recurso">
+
+    <header class="encabezado">
+      <span class="etiqueta">APRENDE EXPLORANDO</span>
+
+
+      <p>
+        Explora las reglas del formato APA y observa
+        cómo se transforma tu documento.
+      </p>
+    </header>
+
+    <section class="herramientas" aria-label="Controles del recurso">
+      <p id="estado" role="status">
+        Estamos preparando tu documento…
+      </p>
+
+      
+    </section>
+
+   <section class="explicacion" aria-labelledby="titulo-explicacion">
+      <span class="etiqueta">OBSERVA EL CAMBIO</span>
+
+      <h2 id="titulo-explicacion">Un documento, seis transformaciones</h2>
+
+      <p id="detalle">
+        Primero verás un texto sin formato.
+        Después podrás tocar cada regla para aplicarla.
+      </p>
+
+      <div
+        class="progreso"
+        id="progreso"
+        role="progressbar"
+        aria-label="Reglas aplicadas"
+        aria-valuemin="0"
+        aria-valuemax="6"
+        aria-valuenow="0"
+      >
+        <span id="barra-progreso"></span>
+      </div>
+
+      <p class="contador" id="contador">0 de 6 reglas aplicadas</p>
+    </section>
+
+
+    <section class="experiencia" aria-label="Documento interactivo">
+
+      <aside class="panel panel-izquierdo" aria-label="Reglas de párrafo">
+
+        <button class="regla" data-regla="margenes" type="button" disabled>
+          <span class="numero">01</span>
+          <span>
+            <strong>Márgenes</strong>
+            <small>Dale espacio a tu contenido.</small>
+          </span>
+          <span class="marca" aria-hidden="true">+</span>
+        </button>
+
+        <button class="regla" data-regla="interlineado" type="button" disabled>
+          <span class="numero">02</span>
+          <span>
+            <strong>Interlineado</strong>
+            <small>Deja respirar cada línea.</small>
+          </span>
+          <span class="marca" aria-hidden="true">+</span>
+        </button>
+
+        <button class="regla" data-regla="sangria" type="button" disabled>
+          <span class="numero">03</span>
+          <span>
+            <strong>Sangría</strong>
+            <small>Identifica cada párrafo.</small>
+          </span>
+          <span class="marca" aria-hidden="true">+</span>
+        </button>
+
+      </aside>
+
+      <div class="zona-documento">
+        <div class="barra-documento">
+          <span class="punto"></span>
+          Documento de práctica
+        </div>
+        <div class="pila-hojas" id="pila-hojas">
+        <article class="hoja" id="hoja" aria-label="Ejemplo de documento">
+            <svg
+  class="guia-margenes"
+  id="guia-margenes"
+  viewBox="0 0 100 100"
+  preserveAspectRatio="none"
+  aria-hidden="true"
+>
+  <path
+    d="M 0 0 H 100 V 100"
+    pathLength="100"
+  ></path>
+
+  <path
+    d="M 100 100 H 0 V 0"
+    pathLength="100"
+  ></path>
+</svg>
+          <span class="numero-pagina" aria-hidden="true">2</span>
+
+          <div class="contenido-documento" id="contenido">
+            <h2>Aprender en entornos digitales</h2>
+
+            <p id="parrafo-uno"></p>
+
+            <p id="parrafo-dos"></p>
+          </div>
+
+          <span class="cursor-escritura" id="cursor" aria-hidden="true">
+            Escribiendo…
+          </span>
+        </article>
+        </div>
+
+        <p class="nota-documento">
+          Simulación visual del cuerpo de un trabajo.
+          Las medidas se representan a escala.
+        </p>
+      </div>
+
+      <aside class="panel panel-derecho" aria-label="Reglas de presentación">
+
+        <button class="regla" data-regla="fuente" type="button" disabled>
+          <span class="numero">04</span>
+          <span>
+            <strong>Fuente y tamaño</strong>
+            <small>Facilita la lectura.</small>
+          </span>
+          <span class="marca" aria-hidden="true">+</span>
+        </button>
+
+        <button class="regla" data-regla="paginacion" type="button" disabled>
+          <span class="numero">05</span>
+          <span>
+            <strong>Número de página</strong>
+            <small>Ubica tu contenido.</small>
+          </span>
+          <span class="marca" aria-hidden="true">+</span>
+        </button>
+
+        <button class="regla" data-regla="alineacion" type="button" disabled>
+          <span class="numero">06</span>
+          <span>
+            <strong>Alineación</strong>
+            <small>Ordena tus párrafos.</small>
+          </span>
+          <span class="marca" aria-hidden="true">+</span>
+        </button>
+
+      </aside>
+
+    </section>
+    <div class="acciones-finales" id="acciones-finales" hidden>
+
+  <button
+    id="comparar"
+    class="boton-comparar"
+    type="button"
+    aria-controls="pila-hojas"
+    aria-pressed="false"
+  >
+    Observa el cambio
+  </button>
+
+  <button id="reiniciar" class="boton-reiniciar" type="button">
+    Reiniciar ↻
+  </button>
+
+</div>
+ 
+    <footer>
+      Guía interactiva · APA 7.ª edición </br>
+         Levitandaira
+    </footer>
+
+  </main>
+</body>
+</html>

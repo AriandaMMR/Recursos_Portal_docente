@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Animaciones para video</title>
+
+  <link rel="stylesheet" href="./estilos.css">
+</head>
+
+<body>
+  <main id="fondo" aria-label="Animación de constelación"></main>
+
+  <div class="controles-grabacion">
+    <button id="btnGrabar" type="button">
+      Grabar y descargar
+    </button>
+
+    <span id="estadoGrabacion" role="status"></span>
+
+    <a id="descargarVideo" hidden>
+      Descargar de nuevo
+    </a>
+  </div>
+
+  <script src="./three.min.js"></script>
+ 
+  <script src="./constelacion.js"></script>
+  <script src="./grabador.js"></script>
+</body>
+</html>
