@@ -34,7 +34,7 @@
    <section class="explicacion" aria-labelledby="titulo-explicacion">
       <span class="etiqueta">OBSERVA EL CAMBIO</span>
 
-      <h2 id="titulo-explicacion">Un documento, seis transformaciones</h2>
+      <h2 id="titulo-explicacion">Un documento, tres transformaciones</h2>
 
       <p id="detalle">
         Primero verás un texto sin formato.
@@ -47,48 +47,53 @@
         role="progressbar"
         aria-label="Reglas aplicadas"
         aria-valuemin="0"
-        aria-valuemax="6"
+        aria-valuemax="3"
         aria-valuenow="0"
       >
         <span id="barra-progreso"></span>
       </div>
 
-      <p class="contador" id="contador">0 de 6 reglas aplicadas</p>
+      <p class="contador" id="contador">0 de 3 reglas aplicadas</p>
     </section>
 
 
     <section class="experiencia" aria-label="Documento interactivo">
 
-      <aside class="panel panel-izquierdo" aria-label="Reglas de párrafo">
+      <aside class="panel panel-izquierdo" aria-label="Información de formato">
 
-        <button class="regla" data-regla="margenes" type="button" disabled>
-          <span class="numero">01</span>
-          <span>
-            <strong>Márgenes</strong>
-            <small>Dale espacio a tu contenido.</small>
-          </span>
-          <span class="marca" aria-hidden="true">+</span>
-        </button>
+  <article class="tarjeta-info">
+    <div class="mini-hoja ejemplo-margenes" aria-hidden="true">
+      <span class="medida">2.54 cm</span>
+      <div class="mini-texto"></div>
+    </div>
 
-        <button class="regla" data-regla="interlineado" type="button" disabled>
-          <span class="numero">02</span>
-          <span>
-            <strong>Interlineado</strong>
-            <small>Deja respirar cada línea.</small>
-          </span>
-          <span class="marca" aria-hidden="true">+</span>
-        </button>
+    <div>
+      <h3>Márgenes</h3>
+      <strong>2.54 cm en los cuatro lados.</strong>
+      <p>
+        Conserva este espacio entre el contenido y
+        los bordes de la página.
+      </p>
+    </div>
+  </article>
 
-        <button class="regla" data-regla="sangria" type="button" disabled>
-          <span class="numero">03</span>
-          <span>
-            <strong>Sangría</strong>
-            <small>Identifica cada párrafo.</small>
-          </span>
-          <span class="marca" aria-hidden="true">+</span>
-        </button>
+  <article class="tarjeta-info">
+    <div class="mini-hoja ejemplo-interlineado" aria-hidden="true">
+      <span class="medida">2.0</span>
+      <div class="mini-texto"></div>
+    </div>
 
-      </aside>
+    <div>
+      <h3>Interlineado doble</h3>
+      <strong>Selecciona 2.0 en el cuerpo del texto.</strong>
+      <p>
+        No agregues espacio adicional antes
+        ni después de los párrafos.
+      </p>
+    </div>
+  </article>
+
+</aside>
 
       <div class="zona-documento">
         <div class="barra-documento">
@@ -139,7 +144,7 @@
       <aside class="panel panel-derecho" aria-label="Reglas de presentación">
 
         <button class="regla" data-regla="fuente" type="button" disabled>
-          <span class="numero">04</span>
+          <span class="numero">01</span>
           <span>
             <strong>Fuente y tamaño</strong>
             <small>Facilita la lectura.</small>
@@ -148,7 +153,7 @@
         </button>
 
         <button class="regla" data-regla="paginacion" type="button" disabled>
-          <span class="numero">05</span>
+          <span class="numero">02</span>
           <span>
             <strong>Número de página</strong>
             <small>Ubica tu contenido.</small>
@@ -157,7 +162,7 @@
         </button>
 
         <button class="regla" data-regla="alineacion" type="button" disabled>
-          <span class="numero">06</span>
+          <span class="numero">03</span>
           <span>
             <strong>Alineación</strong>
             <small>Ordena tus párrafos.</small>
@@ -185,6 +190,65 @@
   </button>
 
 </div>
+
+<section class="actividad-citas" aria-labelledby="titulo-citas">
+
+  <span class="etiqueta">AHORA PRACTICA</span>
+
+  <h2 id="titulo-citas">
+    ¿Qué citas necesitan sangría en bloque?
+  </h2>
+
+  <p>
+    Marca las citas textuales que deben presentarse en bloque,
+    con una sangría izquierda de <strong>1.27 cm</strong>.
+    Después, pulsa <strong>Revisar</strong>.
+  </p>
+
+  <div class="recordatorio-citas">
+    <p>
+      <strong>Menos de 40 palabras:</strong>
+      se integran en el párrafo, entre comillas,
+      sin sangría adicional de bloque.
+    </p>
+
+    <p>
+      <strong>40 palabras o más:</strong>
+      van en un bloque aparte, sin comillas
+      y con sangría izquierda de 1.27 cm.
+    </p>
+  </div>
+
+  <p class="nota-ejercicio">
+    Esta actividad evalúa la sangría de citas en bloque,
+    distinta de la sangría de primera línea de un párrafo.
+    Los textos, autores y fuentes son ficticios.
+  </p>
+
+  <form id="ejercicio-citas">
+
+    <div class="lista-citas" id="lista-citas"></div>
+
+    <div class="controles-citas">
+      <button class="boton-comparar" type="submit">
+        Revisar
+      </button>
+
+      <button
+        class="boton-reiniciar"
+        id="reintentar-citas"
+        type="button"
+        hidden
+      >
+        Intentar de nuevo
+      </button>
+    </div>
+
+    <p id="resultado-citas" role="status"></p>
+
+  </form>
+
+</section>
  
     <footer>
       Guía interactiva · APA 7.ª edición </br>

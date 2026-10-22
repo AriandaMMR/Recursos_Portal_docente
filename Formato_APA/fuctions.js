@@ -1,6 +1,7 @@
 const hoja = document.getElementById("hoja");
 const guiaMargenes = document.getElementById("guia-margenes");
 const botones = document.querySelectorAll(".regla");
+const totalReglas = botones.length;
 const estado = document.getElementById("estado");
 const cursor = document.getElementById("cursor");
 
@@ -106,7 +107,8 @@ botonComparar.setAttribute("aria-pressed", "false");
   clearTimeout(temporizadorResaltado);
   aplicadas.clear();
 
-  hoja.className = "hoja";
+ hoja.className =
+  "hoja con-margenes con-interlineado con-sangria";
   guiaMargenes.classList.remove("trazando");
 
   botones.forEach((boton) => {
@@ -122,10 +124,10 @@ botonComparar.setAttribute("aria-pressed", "false");
 
   actualizarProgreso();
 
-  tituloExplicacion.textContent = "Un documento, seis transformaciones";
+  tituloExplicacion.textContent = "Un documento, tres transformaciones";
 
   detalle.textContent =
-    "Primero verás un texto sin formato. Después podrás tocar cada regla para aplicarla.";
+    "Los márgenes, el interlineado y la sangría de párrafo ya están preparados. Aplica las tres reglas de presentación.";
 
   estado.textContent = "Estamos preparando tu documento…";
   cursor.hidden = true;
@@ -164,7 +166,8 @@ botonComparar.setAttribute("aria-pressed", "false");
   // Guarda una copia del documento sin las reglas aplicadas.
 const hojaOriginal = hoja.cloneNode(true);
 
-hojaOriginal.className = "hoja hoja-original";
+hojaOriginal.className =
+  "hoja con-margenes con-interlineado con-sangria hoja-original";
 hojaOriginal.removeAttribute("id");
 
 // Evita repetir los identificadores del documento principal.
@@ -187,9 +190,14 @@ pilaHojas.prepend(hojaOriginal);
 function actualizarProgreso() {
   const cantidad = aplicadas.size;
 
-  barraProgreso.style.width = `${(cantidad / 6) * 100}%`;
+  barraProgreso.style.width =
+    `${(cantidad / totalReglas) * 100}%`;
+
+  progreso.setAttribute("aria-valuemax", totalReglas);
   progreso.setAttribute("aria-valuenow", cantidad);
-  contador.textContent = `${cantidad} de 6 reglas aplicadas`;
+
+  contador.textContent =
+    `${cantidad} de ${totalReglas} reglas aplicadas`;
 }
 
 botones.forEach((boton) => {
@@ -238,7 +246,7 @@ botones.forEach((boton) => {
 
     actualizarProgreso();
 
-    if (aplicadas.size === 6) {
+    if (aplicadas.size === totalReglas) {
   botones.forEach((botonRegla) => {
     botonRegla.disabled = true;
   });
@@ -250,7 +258,7 @@ botones.forEach((boton) => {
   tituloExplicacion.textContent = "¡Tu documento se transformó!";
 
   detalle.textContent =
-    "Aplicaste las seis reglas. Pulsa «Observa el cambio» para descubrir cómo se veía el documento al principio.";
+    "Aplicaste las tres reglas. Pulsa «Observa el cambio» para comparar la presentación inicial y la final.";
 } else {
   estado.textContent = activar
     ? `Aplicaste: ${regla.titulo}.`
@@ -262,7 +270,7 @@ botones.forEach((boton) => {
 document.getElementById("reiniciar").addEventListener("click", iniciar);
 
 botonComparar.addEventListener("click", async () => {
-  if (comparacionEnCurso || aplicadas.size !== 6) return;
+  if (comparacionEnCurso || aplicadas.size !== totalReglas) return;
 
   comparacionEnCurso = true;
   const turnoActual = ejecucion;
@@ -289,16 +297,16 @@ botonComparar.addEventListener("click", async () => {
     : "Observa el cambio";
 
   tituloExplicacion.textContent = comparando
-    ? "Antes: documento sin formato"
-    : "Después: documento con formato";
+    ? "Antes: presentación inicial"
+    : "Después: presentación corregida";
 
   detalle.textContent = comparando
-    ? "Observa los márgenes, las líneas, la sangría, la fuente, la numeración y la alineación antes de aplicar las reglas."
-    : "Aquí puedes ver juntas las seis correcciones que realizaste.";
+    ? "Observa la fuente, la numeración y la alineación antes de aplicar las tres reglas."
+    : "Aquí puedes ver juntas las tres correcciones que realizaste.";
 
   estado.textContent = comparando
     ? "Estás viendo el documento original."
-    : "Estás viendo el documento con las seis reglas aplicadas.";
+    : "Estás viendo el documento con las tres reglas aplicadas.";
 
   await esperar(reducirMovimiento.matches ? 0 : 700);
 
@@ -313,3 +321,158 @@ botonComparar.addEventListener("click", async () => {
 });
 
 iniciar();
+
+// ACTIVIDAD INDEPENDIENTE DE CITAS EN BLOQUE.
+
+const ejemplosCitas = [
+  {
+    texto:
+      "La retroalimentación permite reconocer avances y orientar nuevas decisiones durante el aprendizaje",
+    fuente: "(López, 2024, p. 12)"
+  },
+  {
+    texto:
+      "La participación en un entorno virtual requiere espacios donde las personas puedan expresar dudas, compartir experiencias y revisar sus ideas con apoyo de otros. Cuando estas oportunidades se integran de manera constante, el aprendizaje se convierte en un proceso de colaboración, reflexión y construcción compartida",
+    fuente: "(Martínez, 2023, p. 28)"
+  },
+  {
+    texto:
+      "Organizar el tiempo de estudio ayuda a distribuir las tareas y mantener una participación constante",
+    fuente: "(García, 2024, p. 9)"
+  },
+  {
+    texto:
+      "El uso de recursos digitales adquiere sentido cuando responde a una intención educativa clara. No basta con incorporar herramientas novedosas, pues también es necesario acompañar a los estudiantes, ofrecer instrucciones comprensibles y generar oportunidades para aplicar lo aprendido en situaciones relacionadas con su contexto cotidiano",
+    fuente: "(Rivera, 2025, p. 35)"
+  }
+];
+
+const listaCitas = document.getElementById("lista-citas");
+const formularioCitas = document.getElementById("ejercicio-citas");
+const resultadoCitas = document.getElementById("resultado-citas");
+const reintentarCitas = document.getElementById("reintentar-citas");
+
+let citasRevisadas = false;
+
+ejemplosCitas.forEach((ejemplo, indice) => {
+  // Solo se cuentan las palabras del texto citado.
+  ejemplo.palabras = ejemplo.texto.trim().split(/\s+/).length;
+  ejemplo.necesitaBloque = ejemplo.palabras >= 40;
+
+  const tarjeta = document.createElement("article");
+  tarjeta.className = "cita-ejercicio";
+
+  tarjeta.innerHTML = `
+    <div class="cabecera-cita">
+      <h3>Ejemplo ${indice + 1}</h3>
+      <span class="conteo-palabras">
+        ${ejemplo.palabras} palabras
+      </span>
+    </div>
+
+    <p class="texto-cita">
+      <span class="contenido-cita"></span>
+      <span class="fuente-cita"></span>
+    </p>
+
+    <label class="opcion-cita">
+      <input type="checkbox">
+      Aplicar sangría de bloque de 1.27 cm
+    </label>
+
+    <p class="feedback-cita" hidden></p>
+  `;
+
+  tarjeta.querySelector(".contenido-cita").textContent =
+    ejemplo.texto;
+
+  tarjeta.querySelector(".fuente-cita").textContent =
+    ejemplo.fuente;
+
+  const casilla = tarjeta.querySelector("input");
+
+  casilla.setAttribute(
+    "aria-label",
+    `Aplicar sangría de bloque al ejemplo ${indice + 1}`
+  );
+
+  casilla.addEventListener("change", () => {
+    tarjeta.classList.toggle("seleccionada", casilla.checked);
+  });
+
+  listaCitas.append(tarjeta);
+});
+
+formularioCitas.addEventListener("submit", (evento) => {
+  evento.preventDefault();
+
+  if (citasRevisadas) return;
+
+  citasRevisadas = true;
+
+  let aciertos = 0;
+
+  const tarjetas = listaCitas.querySelectorAll(".cita-ejercicio");
+
+  tarjetas.forEach((tarjeta, indice) => {
+    const ejemplo = ejemplosCitas[indice];
+    const casilla = tarjeta.querySelector("input");
+    const feedback = tarjeta.querySelector(".feedback-cita");
+
+    const correcta =
+      casilla.checked === ejemplo.necesitaBloque;
+
+    if (correcta) aciertos++;
+
+    tarjeta.classList.add(
+      correcta ? "correcta" : "incorrecta"
+    );
+
+    feedback.hidden = false;
+
+    const motivo = ejemplo.necesitaBloque
+      ? `Tiene ${ejemplo.palabras} palabras: debe presentarse en bloque, sin comillas y con sangría izquierda de 1.27 cm.`
+      : `Tiene ${ejemplo.palabras} palabras: se integra en el párrafo entre comillas, sin sangría adicional de bloque.`;
+
+    feedback.textContent =
+      `${correcta ? "✓ Correcto." : "Revisa tu elección."} ${motivo}`;
+
+    casilla.disabled = true;
+  });
+
+  resultadoCitas.textContent =
+    `Obtuviste ${aciertos} de ${ejemplosCitas.length} respuestas correctas.`;
+
+  formularioCitas.querySelector('[type="submit"]').disabled = true;
+
+  reintentarCitas.hidden = false;
+});
+
+reintentarCitas.addEventListener("click", () => {
+  citasRevisadas = false;
+
+  listaCitas.querySelectorAll(".cita-ejercicio").forEach((tarjeta) => {
+    tarjeta.classList.remove(
+      "correcta",
+      "incorrecta",
+      "seleccionada"
+    );
+
+    const casilla = tarjeta.querySelector("input");
+
+    casilla.checked = false;
+    casilla.disabled = false;
+
+    const feedback = tarjeta.querySelector(".feedback-cita");
+
+    feedback.hidden = true;
+    feedback.textContent = "";
+  });
+
+  resultadoCitas.textContent = "";
+  reintentarCitas.hidden = true;
+
+  formularioCitas.querySelector('[type="submit"]').disabled = false;
+
+  listaCitas.querySelector("input").focus();
+});

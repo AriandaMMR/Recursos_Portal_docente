@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Intro de Inducción</title>
+
+  <link rel="stylesheet" href="estilos.css">
+
+  <script src="funciones.js" defer></script>
+  <script src="grabador.js" defer></script>
+</head>
+
+<body>
+
+  <main>
+    <canvas
+      id="escena"
+      width="1920"
+      height="1080"
+      role="img"
+      aria-label="Tips para iniciar tu Curso de Inducción"
+    ></canvas>
+
+    <div class="controles">
+      <button id="btnGrabar" type="button" disabled>
+        Grabar video de 10 segundos
+      </button>
+
+      <p id="estadoGrabacion" role="status">
+        Cargando tipografía…
+      </p>
+
+      <a id="descargarVideo" hidden>
+        Descargar video
+      </a>
+    </div>
+  </main>
+
+</body>
+</html>
