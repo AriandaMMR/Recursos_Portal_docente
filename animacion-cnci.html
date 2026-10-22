@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bienvenido · CNCI Virtual</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#073b78;background:#faf9f6}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit}button:focus-visible,a:focus-visible{outline:3px solid #ff8133;outline-offset:6px}
+.intro{min-height:100svh;display:grid;place-items:center;padding:40px 24px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 15% 20%,#e8efff 0,transparent 48%),radial-gradient(ellipse at 85% 85%,#fff0e5 0,transparent 40%),#faf9f6;transition:opacity .4s ease,transform .4s ease}
+.intro.saliendo{opacity:0;transform:scale(1.025);pointer-events:none}.contenido{width:min(100%,560px);text-align:center}.logo{width:100%;margin:0 auto}svg{display:block;width:100%;height:auto;overflow:visible}
+#logo-cnci path,#logo-cnci polygon{fill:#296aff;stroke:#296aff;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.js #logo-cnci path,.js #logo-cnci polygon{fill-opacity:0;stroke-opacity:0}
+.acciones{height:108px;margin-top:35px;display:flex;justify-content:center;align-items:flex-start;padding-top:14px}
+.iniciar{border:0;border-radius:999px;padding:17px 38px;background:#296aff;color:white;font-size:17px;font-weight:700;box-shadow:0 9px 23px #296aff2b;cursor:pointer;display:inline-flex;align-items:center;gap:20px;transition:background .2s,box-shadow .2s}
+.iniciar:hover{background:#1759e8;box-shadow:0 12px 26px #296aff40}.iniciar span{font-size:23px;font-weight:400;line-height:1}
+.js .iniciar{opacity:0;visibility:hidden;transform:scale(.5)}.js .iniciar.listo{visibility:visible;animation:pop .65s both}
+.repetir{position:absolute;bottom:25px;right:28px;border:0;background:transparent;color:#426184;cursor:pointer;font-size:13px;padding:12px}.repetir:disabled{opacity:.35;cursor:default}
+@keyframes pop{0%{opacity:0;transform:translateY(12px) scale(.55)}55%{opacity:1;transform:translateY(-5px) scale(1.12)}78%{transform:translateY(2px) scale(.96)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.actividad{min-height:100svh;padding:40px 24px;display:grid;place-items:center}.tarjeta{width:min(100%,660px);padding:40px;border:1px solid #d9e4f7;border-radius:24px;background:white}.tarjeta h1{font-size:clamp(26px,5vw,40px);margin:0 0 15px}.tarjeta p{line-height:1.65;color:#426184}.etiqueta{font-size:12px;letter-spacing:2px;font-weight:700;color:#296aff!important}.volver{border:0;background:#edf3ff;padding:12px 20px;border-radius:12px;color:#073b78;cursor:pointer;margin-top:15px}
+[hidden]{display:none!important}@media(max-width:520px){.contenido{max-width:380px}.acciones{margin-top:25px}.iniciar{padding:15px 32px;font-size:16px}.tarjeta{padding:26px}.repetir{right:16px;bottom:15px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<section class="intro" id="pantalla-inicio" aria-label="Bienvenida">
+<div class="contenido"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" id="logo-cnci" data-name="Capa 2" viewBox="-6 -6 894 474" role="img" aria-label="Universidad CNCI Virtual">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #306efe;
+      }
+
+      .cls-2 {
+        fill: #2b6afe;
+      }
+
+      .cls-3 {
+        fill: #2f6dfe;
+      }
+
+      .cls-4 {
+        fill: #3471fe;
+      }
+
+      .cls-5 {
+        fill: #316efe;
+      }
+
+      .cls-6 {
+        fill: #2e6dfe;
+      }
+
+      .cls-7 {
+        fill: #3571fe;
+      }
+
+      .cls-8 {
+        fill: #2d6cfe;
+      }
+
+      .cls-9 {
+        fill: #3370fe;
+      }
+
+      .cls-10 {
+        fill: #2c6bfe;
+      }
+
+      .cls-11 {
+        fill: #2b6bfe;
+      }
+
+      .cls-12 {
+        fill: #3270fe;
+      }
+
+      .cls-13 {
+        fill: #3a75fe;
+      }
+
+      .cls-14 {
+        fill: #2a6afe;
+      }
+    </style>
+  </defs>
+  <g id="Capa_1-2" data-name="Capa 1">
+    <g>
+      <g>
+        <g>
+          <g>
+            <path class="cls-2" d="M282.44,279.45c-23.3-28.29-45.03-56.22-70.11-83.09l-1.09,71.67c.44,6.38,2.73,11.73,9.01,13.47l17.49,3.49-.03,14.24-80.55.02-.26-14.14,16.55-3.32c5.96-1.19,10.14-5.69,10.14-12.41l.02-102.65c0-6.56-4.06-11.41-9.99-12.56l-16.9-3.27.76-14.39,52.27-.23c4.42-.02,9.44-.61,13.69,1.06l75.72,93.03-1.01-64.59c-.09-5.92-4.4-10.46-9.61-11.52l-16.86-3.43.22-14.44h80.5s.09,14.45.09,14.45l-18.37,3.87c-4.01.84-7.11,4.82-7.1,8.92l.14,47.98.73,87.56-29.14.06-16.3-19.79Z" id="piece-8" />
+            <path class="cls-2" d="M143.27,268.98l.09,18.35c-8.21,6.61-16.86,9.98-26.76,12.61-43.98,11.67-92.53-5.64-103.37-52.41-5.24-22.62-3.86-45.65,6.41-66.53,16.63-33.82,47.37-48.06,84.58-47.44,12.25.7,23.51,2.48,35.95,5.47l-4.39,38.69c-24.73-9.44-51.68-15.11-77.5-10.21-6.7,23.32-7.79,47.18-1.39,70.13,5.58,20.02,21.32,33.28,41.74,35.54,14.96,1.66,28.47.03,44.63-4.21Z" id="piece-9" />
+          </g>
+          <path class="cls-11" d="M480.32,268.98l.32,18.29c-8.72,7.22-18.6,10.86-29.53,13.39-43.62,10.11-89.61-7.52-100.45-52.78-5.82-24.31-3.54-49.13,8.51-71.05,17.14-31.19,47.63-43.99,82.76-43.26,12.13.67,23.67,2.51,35.58,5.52l-4.37,38.59c-24.34-9.22-51.05-15.1-77.45-10.17-6.54,22.51-7.76,45.62-2.06,68.07,5.02,19.79,19.04,33.81,39.3,37.16,15.61,2.31,30.11.95,47.41-3.75Z" id="piece-10" />
+          <path class="cls-10" d="M586.97,299.22l-92.71.03-.18-14.2,16.21-3.13c6.48-1.25,10.25-6.16,10.25-13.11l-.04-102.34c0-6.56-4.33-11.09-10.18-12.28l-16.01-3.26-.15-14.06h92.79s-.1,14.04-.1,14.04l-16.36,3.35c-6.4,1.31-10.06,6.45-10.06,13.48v100.63c0,7.05,3.65,12.18,10.07,13.46l16.49,3.29v14.1Z" id="piece-11" />
+        </g>
+        <g>
+          <path class="cls-14" d="M798.03,1.87l.09-1.87,1.07,1.67c26.15,43.69,46.61,90.5,60.18,140.06,14.29,52.19,19.02,106.84-1.97,158.01l-161.97-.08c22.02-24.2,42.72-46.94,62-72.19,40.5-53.06,55.34-135.47,44.76-200.42l-4.01-24.63-.16-.55Z" id="piece-13" />
+          <path class="cls-2" d="M631.56,193.76c25.56,24.89,43.98,70.23,32.84,106.22-13.01-3.96-23.2-11.81-32.53-21.77-24.38-25.99-40.71-68.41-29.56-103.23,11.85,4,20.91,10.66,29.25,18.78Z" id="piece-14" />
+          <g>
+            <path class="cls-11" d="M752.66,65.12c15.44,31.87,11.9,75.24,2.77,109.35-9.29,34.69-24.98,66.32-47.94,93.77-8.28,9.9-16.59,18.91-28.04,26.03,4.48-31.34-7.26-67.7-19.92-95.4-15.43-33.75-19.38-70.22-4.2-104.72,14.11-32.06,38.9-60.27,71.71-75.34-11.61,12.61-23.78,22.2-31.6,36.62-6.19,10.17-9.29,21.08-9.81,33.34-1.46,34.64,7.47,68.88,27.23,99.1,17.41-19.94,28.94-43.05,36.24-67.71,5.37-18.14,5.6-35.69,3.55-55.05Z" id="piece-16" />
+            <path class="cls-8" d="M723.85,82.23c15.61,20.71,11.4,60.1-9.56,77.02-17.37-19.68-12.67-60.94,9.56-77.02Z" id="piece-17" />
+          </g>
+        </g>
+      </g>
+      <g>
+        <path class="cls-7" d="M125.46,98.44c-.39-.85-1.21-2.87-.7-2.98l3.33-.72c3.27-.7,5.65-2.31,5.62-5.97l-.16-27.18c-.02-3.27-1.87-8.06-4.78-9.43-6.73-3.16-15.02-1.86-20.91,2.5l-.17,34.12c-.02,3.26,2.71,5.31,5.55,5.82l2.97.53c.7.13.51,1.87.34,3.22l-26.44.14c-.69,0-2.41-.98-2.47-1.66-.27-3.26,5.83-.64,9.89-5.11l.12-35.04c.01-3.88-2.63-6.46-6.8-7.15-.55-2,.3-5.42,1.86-7.26,5.74-.08,10.48,2.68,13.9,7.82,7.44-4.94,15.35-8.44,24.06-6.8,7.99,1.5,13.07,7.45,13.06,15.44v30.03c0,6.98,11.8,8.27,19.29,3.38l.2-36.47c0-1.42-.73-4.18-1.76-4.85-3.27-2.15-7.75-1.26-7.81-2.13l-.21-3.12,19.91-3.59.17,48.94c0,2.34,4.67,3.62,6.48,3.94l2.95.51c.6.1-.23,2.62-.64,3.05l-56.85.03Z" id="piece-19" />
+        <path class="cls-6" d="M64.06,20.65l28.39-.25,1.98,1.87c2.13,2-9.82,1.48-9.84,5.85l-.25,51.57c-.04,7.89-4.72,14.47-11.78,17.33-9.95,4.03-20.9,4.11-30.91.29-7.82-2.98-12.53-10.19-12.55-18.61l-.12-50.61c0-2.41-4.31-3.74-6.12-3.96l-3.1-.39c-.59-.07-.42-2.11-.29-3.2l28.99-.05c.32.2,1.7,2.63,1.09,2.8l-2.86.76c-1.73.46-6.59,1.36-6.59,3.61l-.05,52c-.01,9.8,7.94,15.86,17.21,15.64s16.66-6.32,16.68-16.09l.09-49.12c.02-8.41-10.76-3.38-9.97-9.44Z" id="piece-20" />
+        <path class="cls-1" d="M404.4,94.73c-12.35-9.64-12.4-39.85,5.7-48.75,8.23-4.04,16.62-3.64,26.46-1.46l-.35-24.7-7.41-2.31c-.61-.19-1.64-.81-2.12-1.14s1.25-2.26,1.94-2.35l17.99-2.52.11,76.13c0,1.52.8,4.29,1.73,5.11s3.52,1.23,5.07,1.53l2.77.55c.53.11.3,1.86.17,2.82l-18.78,2.24-1.75-4.88c-9.58,6.01-22.29,6.93-31.52-.27ZM436.07,86.81c1.15-11.83.57-23.21.47-34.83-4.06-4.24-10.94-4.91-16.66-3.15-13.09,4.03-15.9,22.59-10.04,35.9,2.4,5.45,7.45,8.52,12.89,8.92,3.86.28,12.8-1.32,13.34-6.85Z" id="piece-21" />
+        <path class="cls-3" d="M526.35,99.51c-9.46-.98-16.34-6.83-18.85-15.5-5.27-18.23,1.97-37.94,20.92-40.63,5.83-.83,11.28-.15,18.08.91l.08-20.46c0-1.09-.46-3.53-1.25-4.14-.95-.73-3.34-1.43-4.76-1.68l-3.03-.53c-.76-.13-.37-2.9.28-3.26l18.88-2.78.16,77c0,4.17,3.13,5.22,6.67,5.82l2.78.47c.58.1.35,2.25.14,2.97l-18.62,2.06-2.27-4.5c-5.6,3.55-11.93,5-19.21,4.25ZM545.9,86.88c1.37-12.14.61-23.97.47-35.45-5.06-4.23-12.09-4.49-18-1.95-11.07,4.74-12.96,19.07-9.89,31.42,1.61,6.47,5.86,10.89,11.67,12.39,4.57,1.18,15.03-.14,15.74-6.41Z" id="piece-22" />
+        <path class="cls-9" d="M476.2,99.13c-8.31,2.32-15.93-2.15-17.85-9.71-1.38-5.42-.88-11.46,2.19-16.3l27.49-4.35-.38-11.97c-.23-7.25-15.22-7.12-26.72-3.52l.47-4.23c7.66-5.74,17.7-7.72,27.07-4.91,5.75,1.72,9.87,6.51,9.89,12.7l.06,25.85c.01,4.64,2.01,7.57,7.57,8.79-.22,2.14-1.36,5.4-2.79,7.81-5.89.25-10.98-3.05-14.19-8.1-4.08,3.23-7.95,6.58-12.8,7.94ZM488.14,86.43l-.1-13.52-17.93,3.98c-2.42,4.67-2.78,11.52,2.37,14.23,4.8,2.53,12.44-.11,15.66-4.7Z" id="piece-23" />
+        <path class="cls-9" d="M278.91,90.04c.63.04.72,3.93-.14,4.54-9.74,6.03-22.87,6.93-33.56,1.94-14.28-6.66-16.71-30.57-6.1-44.88,7.4-9.99,22.44-12.04,32-4.03,6.26,5.24,8.02,13.71,7.48,21.46l-34.81.47c-2.25,12.2,7.08,22.6,19.28,22.44l15.84-1.93ZM267.47,63.45c-.58-4.96-1.12-8.6-3.2-12-1.89-3.1-6.15-4.09-9.65-3.8-6.81.56-11.59,8.59-11.2,17.44l24.04-1.64Z" id="piece-24" />
+        <path class="cls-12" d="M362.51,84.96c-1.48,16-22.71,16.69-39.64,12.76l-.16-14.14c0-.84,2.18-2.31,2.71-1.82,3.13,2.89,1.97,9.28,6.73,11.66,8.05,4.03,19.51,1.46,20.34-5.26.39-3.15-1.15-7.49-4.23-8.76l-14.78-6.1c-6.98-2.88-11.38-8.72-10.8-15.79,1.27-15.33,20.69-16.93,37.1-12.48l.16,13.33c0,.6-1.99,1.75-2.46,1.45s-1.54-1.46-1.66-2.05c-1.39-6.72-8.07-12.01-15.83-10.01-3.34.86-6.4,3.39-6.92,6.71s1.92,7.53,5.33,8.9l14.25,5.7c6.84,2.74,10.5,9.02,9.86,15.91Z" id="piece-25" />
+        <path class="cls-1" d="M215.99,44.83l20.79-.15.41,2.48c.12.71-5.45.86-7.26,5.43l-18.17,45.83c-.73,1.43-5.31,1.3-6.53.11l-19.92-45.95c-.86-1.98-3.67-3.85-5.36-4.56l-2.06-.87c-.61-.26.65-2.39.99-2.5l26.12.22c-1.06,2.72-2.07,3.14-3.72,3.66l-3.67,1.16c-.8.25-.79,3.08-.46,3.89l13.54,33.75,11.93-33.49c.24-.67.26-3.07-.2-3.56-2.67-2.82-7.52-1.05-6.42-5.43Z" id="piece-26" />
+        <path class="cls-1" d="M283.55,98.48c-4.43-5.05,4.11-2.02,8.41-6.93l.16-33.86c.02-4.11-2.34-6.85-6.25-8.15-1.51-1.07-.15-6.59,1.78-6.95,5.9-.95,10.78,3.02,13.83,7.28,5.06-5.45,10.26-9.13,17.83-8.46l.13,11.46c-6.91-.46-11.14-.58-17.38,1.11l-.02,33.83c0,1.35.51,4.19,1.42,4.98,1.06.92,3.81,1.68,5.46,2l2.95.58c.62.12.04,2.6-.16,3.01l-28.16.11Z" id="piece-27" />
+        <path class="cls-13" d="M366.36,98.47c-.35-.2-1.46-2.69-.8-2.84l3.49-.82c2.14-.51,5.33-1.85,6.38-3.84v-35.38c-.22-1.4-.74-4.61-1.95-4.96l-5.33-1.57-2.75-.93c-.62-.21.79-2.58,1.57-2.72l18.51-3.37v45.74c0,1.42.53,4.58,1.59,5.23s3.35,1.3,4.94,1.64l2.88.62c.68.14.53,1.59.42,3.12l-28.96.1Z" id="piece-28" />
+      </g>
+      <path class="cls-5" d="M382.4,26.49c-4.56,1.13-8.29-1.02-9.18-4.47-1.02-3.96,1.05-7.94,5.77-8.48,3.68-.42,7.18,1.53,7.95,4.73s-.51,7.23-4.54,8.22Z" id="piece-29" />
+      <path class="cls-1" d="M170.52,26.38c-4.64,1.39-8.56-.7-9.42-4.21-.93-3.81.67-7.84,5.1-8.55,3.54-.57,7.2.87,8.3,4.05s.05,7.5-3.98,8.71Z" id="piece-30" />
+      <g>
+        <path class="cls-8" d="M863.66,374.65H19.57c-11.02,0-18.75-7.65-19.52-17.82-.7-9.2,6.75-19.88,17.75-19.88l847.06.02c10.09,0,17.16,10.98,16.92,18.71-.31,10.07-6.88,17.64-18.11,18.96Z" id="piece-32" />
+        <path class="cls-4" d="M583.03,411.9h11.31s-.14,33.22-.14,33.22c-.05,11.11-9.1,17.05-19.4,17.01-10.63-.04-18.96-6.65-18.96-17.86v-32.38s11.45,0,11.45,0l.09,32.5c.01,4.61,4.12,7.01,7.81,6.95,4.26-.07,7.77-3.07,7.78-7.96l.06-31.47Z" id="piece-33" />
+        <path class="cls-5" d="M723.99,451.91h-16.54s-2.77,9.16-2.77,9.16l-12.07-.23,16.62-48.91,12.64-.15,16.73,49.2-12.17.08-2.44-9.14ZM720.92,441.91l-5.37-17.46-5.27,17.7,10.64-.24Z" id="piece-34" />
+        <polygon class="cls-1" points="55.32 411.88 67.4 411.97 50.67 460.96 37.54 461.06 20.76 412.01 32.85 411.85 44.11 447.14 55.32 411.88" id="piece-35" />
+        <polygon class="cls-1" points="441.92 461.02 430.91 461.09 430.93 422.39 416.89 422.33 417.21 411.85 455.52 411.85 455.67 422.33 441.9 422.38 441.92 461.02" id="piece-36" />
+        <polygon class="cls-7" points="869.22 450.6 869.23 461.08 838.05 461.11 838.01 411.97 849.48 411.87 849.55 450.57 869.22 450.6" id="piece-37" />
+        <polygon class="cls-8" points="178.2 460.73 166.95 461.15 166.91 411.95 178.1 411.84 178.2 460.73" id="piece-38" />
+        <path class="cls-3" d="M308.25,461.14l-9.31-15.28c-.57-.93-4.28-1.01-4.61-.56l-.07,15.69-11.44.1.07-49.29,21.31.32c9.11.14,15.19,7.49,15.14,16.19-.04,6.87-3.08,12.11-9.65,14.92l11.56,17.65-12.99.26ZM304.14,434.47c1.75-.1,3.7-4.03,3.73-5.71s-1.45-5.65-3.2-5.78l-10.41-.78.09,12.85,9.79-.58Z" id="piece-39" />
+      </g>
+    </g>
+  </g>
+</svg></div>
+<div class="acciones"><button class="iniciar" id="iniciar" type="button" disabled>Iniciar <span aria-hidden="true">→</span></button></div>
+</div>
+<button class="repetir" id="repetir" type="button" disabled>↻ Repetir animación</button>
+<span id="estado" role="status" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)"></span>
+</section>
+<!-- Puedes reemplazar esta sección con el contenido de tu actividad. -->
+<main id="actividad" class="actividad" hidden tabindex="-1">
+<div class="tarjeta"><p class="etiqueta">UNIVERSIDAD CNCI VIRTUAL</p><h1 id="titulo-actividad" tabindex="-1">¡Todo listo para comenzar!</h1><p>Aquí comienza tu recurso. Puedes colocar el contenido de tu actividad en esta sección o configurar el botón Iniciar para abrir otro HTML.</p><button class="volver" id="volver" type="button">Volver a la presentación</button></div>
+</main>
+<noscript><style>.iniciar{display:none}</style><p style="text-align:center">Activa JavaScript para ver la animación y comenzar.</p></noscript>
+<script>
+// === CONFIGURACIÓN PARA REUTILIZAR ===
+// Deja vacío para mostrar la sección #actividad de este mismo archivo.
+// Para abrir otro archivo, escribe por ejemplo: "actividad.html".
+const URL_ACTIVIDAD = "";
+
+const pantalla = document.getElementById('pantalla-inicio');
+const iniciar = document.getElementById('iniciar');
+const repetir = document.getElementById('repetir');
+const actividad = document.getElementById('actividad');
+const estado = document.getElementById('estado');
+const piezas = [...document.querySelectorAll('#logo-cnci path, #logo-cnci polygon')];
+const reducir = matchMedia('(prefers-reduced-motion: reduce)');
+let animaciones = [];
+let ejecucion = 0;
+let entrando = false;
+
+// Cada letra tiene su propio tiempo. Los puntos de las íes acompañan a su letra.
+const tiempos = {
+ 'piece-9':250, 'piece-8':570, 'piece-10':390, 'piece-11':740,
+ 'piece-13':920, 'piece-14':650, 'piece-16':500, 'piece-17':500,
+ 'piece-20':180, 'piece-19':370, 'piece-30':370, 'piece-26':290,
+ 'piece-24':530, 'piece-27':410, 'piece-25':640, 'piece-28':470,
+ 'piece-29':470, 'piece-21':720, 'piece-23':560, 'piece-22':810,
+ 'piece-32':1250,'piece-35':1000,'piece-38':1150,'piece-39':1050,
+ 'piece-36':1270,'piece-33':1100,'piece-34':1370,'piece-37':1200
+};
+async function animarLogo(){
+ const actual = ++ejecucion;
+ animaciones.forEach(a=>a.cancel());
+ animaciones=[];
+ iniciar.classList.remove('listo');
+ iniciar.disabled=true; repetir.disabled=true;
+ estado.textContent='Dibujando el logo de CNCI.';
+ const promesas=[];
+ piezas.forEach(pieza=>{
+  const longitud=pieza.getTotalLength();
+  const caja=pieza.getBBox();
+  const demora=tiempos[pieza.id]??500;
+  const duracion=caja.height>120?2100:1450;
+  pieza.style.strokeDasharray=`${longitud} ${longitud}`;
+  const trazo=pieza.animate([
+   {strokeDashoffset:longitud,strokeOpacity:1},
+   {strokeDashoffset:0,strokeOpacity:1}
+  ],{duration:reducir.matches?1:duracion,delay:reducir.matches?0:demora,easing:'ease-in-out',fill:'both'});
+  const relleno=pieza.animate([
+   {fillOpacity:0},{fillOpacity:1}
+  ],{duration:reducir.matches?1:1100,delay:reducir.matches?0:demora+duracion*.52,easing:'ease-in-out',fill:'both'});
+  animaciones.push(trazo,relleno);
+  promesas.push(trazo.finished,relleno.finished);
+ });
+ await Promise.all(promesas).catch(()=>{});
+ if(actual!==ejecucion)return;
+ iniciar.disabled=false; repetir.disabled=false;
+ iniciar.classList.add('listo');
+ estado.textContent='Todo listo. Presiona Iniciar para abrir la actividad.';
+}
+iniciar.addEventListener('click',()=>{
+ if(entrando || iniciar.disabled)return;
+ entrando=true; iniciar.disabled=true; repetir.disabled=true;
+ pantalla.classList.add('saliendo');
+ setTimeout(()=>{
+  if(URL_ACTIVIDAD){window.location.assign(URL_ACTIVIDAD);return;}
+  pantalla.hidden=true; actividad.hidden=false;
+  document.getElementById('titulo-actividad').focus();
+  entrando=false;
+ },reducir.matches?0:400);
+});
+repetir.addEventListener('click',animarLogo);
+document.getElementById('volver').addEventListener('click',()=>{
+ actividad.hidden=true; pantalla.hidden=false;
+ pantalla.classList.remove('saliendo');
+ animarLogo();
+});
+animarLogo();
+</script>
+</body>
+</html>

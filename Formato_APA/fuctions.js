@@ -1,9 +1,54 @@
 const hoja = document.getElementById("hoja");
 const guiaMargenes = document.getElementById("guia-margenes");
 const botones = document.querySelectorAll(".regla");
+// Prepara la cara inicial y la cara posterior de cada tarjeta.
+botones.forEach((boton) => {
+  const titulo = boton.querySelector("strong").textContent;
+  const numero = boton.querySelector(".numero").textContent;
+
+  const giro = document.createElement("span");
+  giro.className = "tarjeta-giro";
+  giro.setAttribute("aria-hidden", "true");
+
+  const frente = document.createElement("span");
+  frente.className = "tarjeta-cara tarjeta-frente";
+
+  // Mueve el contenido actual al frente sin perder sus elementos.
+  while (boton.firstChild) {
+    frente.append(boton.firstChild);
+  }
+
+  const reverso = document.createElement("span");
+  reverso.className = "tarjeta-cara tarjeta-reverso";
+
+  const informacion = document.createElement("span");
+
+  const tituloPosterior = document.createElement("strong");
+  tituloPosterior.textContent = titulo;
+
+  const confirmacion = document.createElement("small");
+  confirmacion.textContent = "Regla aplicada";
+
+  const numeroPosterior = document.createElement("span");
+  numeroPosterior.className = "numero numero-posterior";
+  numeroPosterior.textContent = numero;
+
+  informacion.append(tituloPosterior, confirmacion);
+  reverso.append(informacion, numeroPosterior);
+
+  giro.append(frente, reverso);
+  boton.append(giro);
+
+  boton.setAttribute("aria-label", titulo);
+});
 const totalReglas = botones.length;
 const estado = document.getElementById("estado");
 const cursor = document.getElementById("cursor");
+const selloAprobado = document.getElementById("sello-aprobado");
+const letrasSello = document.getElementById("letras-sello");
+const zonaDocumento = document.querySelector(".zona-documento");
+// Coloca el sello dentro de la hoja principal.
+hoja.append(selloAprobado);
 
 const pilaHojas = document.getElementById("pila-hojas");
 const accionesFinales = document.getElementById("acciones-finales");
@@ -95,6 +140,15 @@ async function iniciar() {
 comparacionEnCurso = false;
 
 accionesFinales.hidden = true;
+
+selloAprobado.hidden = true;
+letrasSello.replaceChildren();
+
+zonaDocumento.classList.remove("halo-naranja");
+
+botones.forEach((boton) => {
+  boton.classList.remove("flip-scale-up-ver");
+});
 
 pilaHojas.classList.remove("comparando");
 pilaHojas.querySelector(".hoja-original")?.remove();
@@ -227,6 +281,12 @@ botones.forEach((boton) => {
   }
 }
     boton.classList.toggle("activa", activar);
+
+
+// Reinicia el halo detrás del documento.
+zonaDocumento.classList.remove("halo-naranja");
+void zonaDocumento.offsetWidth;
+zonaDocumento.classList.add("halo-naranja");
     boton.setAttribute("aria-pressed", String(activar));
 
     boton.querySelector(".marca").textContent = activar ? "✓" : "+";
@@ -247,6 +307,7 @@ botones.forEach((boton) => {
     actualizarProgreso();
 
     if (aplicadas.size === totalReglas) {
+      mostrarSello();
   botones.forEach((botonRegla) => {
     botonRegla.disabled = true;
   });
@@ -320,6 +381,35 @@ botonComparar.addEventListener("click", async () => {
   comparacionEnCurso = false;
 });
 
+botones.forEach((boton) => {
+  boton.addEventListener("animationend", (evento) => {
+    if (
+      evento.target === boton &&
+      evento.animationName === "flip-scale-up-ver"
+    ) {
+      boton.classList.remove("flip-scale-up-ver");
+    }
+  });
+});
+
+function mostrarSello() {
+  letrasSello.replaceChildren();
+
+  Array.from("Formato APA aplicado").forEach((letra, indice) => {
+    const elemento = document.createElement("span");
+
+    elemento.textContent = letra;
+    elemento.style.setProperty(
+      "--retraso",
+      `${indice * .045}s`
+    );
+
+    letrasSello.append(elemento);
+  });
+
+  selloAprobado.hidden = false;
+}
+
 iniciar();
 
 // ACTIVIDAD INDEPENDIENTE DE CITAS EN BLOQUE.
@@ -376,9 +466,20 @@ ejemplosCitas.forEach((ejemplo, indice) => {
     </p>
 
     <label class="opcion-cita">
-      <input type="checkbox">
-      Aplicar sangría de bloque de 1.27 cm
-    </label>
+
+  <input
+    class="interruptor-input"
+    type="checkbox"
+    role="switch"
+  >
+
+  <span class="interruptor-pista" aria-hidden="true">
+    <span class="interruptor-perilla"></span>
+  </span>
+
+  <span>Aplicar sangría de bloque de 1.27 cm</span>
+
+</label>
 
     <p class="feedback-cita" hidden></p>
   `;
@@ -399,6 +500,88 @@ ejemplosCitas.forEach((ejemplo, indice) => {
   casilla.addEventListener("change", () => {
     tarjeta.classList.toggle("seleccionada", casilla.checked);
   });
+
+  const pista = tarjeta.querySelector(".interruptor-pista");
+const etiqueta = tarjeta.querySelector(".opcion-cita");
+
+let arrastre = null;
+let bloquearClic = false;
+
+pista.addEventListener("pointerdown", (evento) => {
+  if (casilla.disabled || evento.button !== 0) return;
+
+  casilla.focus({ preventScroll: true });
+
+  arrastre = {
+    id: evento.pointerId,
+    inicio: evento.clientX,
+    base: casilla.checked ? 128 : 0,
+    posicion: casilla.checked ? 128 : 0,
+    movido: false
+  };
+
+  pista.setPointerCapture(evento.pointerId);
+});
+
+pista.addEventListener("pointermove", (evento) => {
+  if (!arrastre || evento.pointerId !== arrastre.id) return;
+
+  const desplazamiento = evento.clientX - arrastre.inicio;
+
+  if (Math.abs(desplazamiento) > 5) {
+    arrastre.movido = true;
+    pista.classList.add("arrastrando");
+  }
+
+  if (!arrastre.movido) return;
+
+  arrastre.posicion = Math.max(
+    0,
+    Math.min(128, arrastre.base + desplazamiento)
+  );
+
+  pista.style.setProperty(
+    "--posicion",
+    `${arrastre.posicion}px`
+  );
+});
+
+pista.addEventListener("pointerup", (evento) => {
+  if (!arrastre || evento.pointerId !== arrastre.id) return;
+
+  if (arrastre.movido) {
+    casilla.checked = arrastre.posicion >= 64;
+
+    casilla.dispatchEvent(
+      new Event("change", { bubbles: true })
+    );
+
+    // Evita que el clic generado al soltar vuelva a cambiarlo.
+    bloquearClic = true;
+
+    setTimeout(() => {
+      bloquearClic = false;
+    }, 0);
+  }
+
+  pista.classList.remove("arrastrando");
+  pista.style.removeProperty("--posicion");
+
+  arrastre = null;
+});
+
+pista.addEventListener("pointercancel", () => {
+  pista.classList.remove("arrastrando");
+  pista.style.removeProperty("--posicion");
+  arrastre = null;
+});
+
+etiqueta.addEventListener("click", (evento) => {
+  if (bloquearClic) {
+    evento.preventDefault();
+    bloquearClic = false;
+  }
+});
 
   listaCitas.append(tarjeta);
 });
