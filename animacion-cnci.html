@@ -145,7 +145,7 @@
 // === CONFIGURACIÓN PARA REUTILIZAR ===
 // Deja vacío para mostrar la sección #actividad de este mismo archivo.
 // Para abrir otro archivo, escribe por ejemplo: "actividad.html".
-const URL_ACTIVIDAD = "";
+const URL_ACTIVIDAD = "./Formato_APA/index.html";
 
 const pantalla = document.getElementById('pantalla-inicio');
 const iniciar = document.getElementById('iniciar');
@@ -203,7 +203,10 @@ iniciar.addEventListener('click',()=>{
  entrando=true; iniciar.disabled=true; repetir.disabled=true;
  pantalla.classList.add('saliendo');
  setTimeout(()=>{
-  if(URL_ACTIVIDAD){window.location.assign(URL_ACTIVIDAD);return;}
+
+  if(URL_ACTIVIDAD){window.location.assign(URL_ACTIVIDAD);
+    return;}
+
   pantalla.hidden=true; actividad.hidden=false;
   document.getElementById('titulo-actividad').focus();
   entrando=false;
